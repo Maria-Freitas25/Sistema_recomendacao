@@ -1,0 +1,1250 @@
+from pywebio import *
+from pywebio.output import *
+from pywebio.input import *
+import math
+from math import sqrt
+from itertools import chain
+
+global xx 
+def tela_recomendacao (xx):
+    tpl = '''
+    <details {{#open}}open{{/open}}>
+    <summary>{{title}}</summary>
+    {{#contents}}
+    {{& pywebio_output_parse}}
+    {{/contents}}
+    </details>
+'''
+    if xx=='Yanis':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Androides Sonham com Ovelhas Elétricas?',
+            "contents": [
+                'O Androides Sonham com Ovelhas Elétricas?, 1968 \nAutor: Philip K. Dick',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/A1nSVUKdSCL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Naruto Gold',
+            "contents": [
+                'Naruto Gold, 1999 - 2014 \nAutor e ilustrador: Masashi Kishimoto',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91xUwI2UEVL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Cavaleiro das Trevas',
+            "contents": [
+                'O Cavaleiro das Trevas, 2011 \nAutor: Frank Miller',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41QD9uNo23L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Máquina do Tempo',
+            "contents": [
+                'A Máquina do Tempo, 1895 \nAutor: H. G Wells',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91XAnKe28UL.jpg'), None, put_code('Sinopse do livro: \nO personagem conhecido apenas como "O viajante do \ntempo", desenvolve com bases em conceitos matemá-\nticos uma máquina capaz de se mover pela quarta \ndimensão, a dimensão do tempo. Com ela, viaja até \nao ano de 802.701 D.C onde encontra seres remanes-\ncentes dos humanos, aparentemente vivendo num mun-\ndo paradisíaco, até perceber que eles, na realida-\nde, servem de alimentos para uma outra raça.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Percy Jackson',
+            "contents": [
+                'Percy Jackson, 2005 - 2009 \nAutor: Rick Riordan',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81x1ZJ1IkoS.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Eu, robô',
+            "contents": [
+                'Eu, robô, 1950 \nAutor: Isaac Asimov',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/414QJOKvD+L.jpg'), None, put_code('Sinopse do livro: \nVerdadeiro marco na história da ficção científica, \nEu, robô reúne os primeiros textos de Isaac Asimov \nsobre robôs, publicados entre 1940 e 1950. São no-\nve contos que relatam a evolução dos autômatos a-\ntravés do tempo, e que contêm em suas páginas, pela \nprimeira vez, as célebres Três Leis da Robótica: os \nprincípios que regem o comportamento dos robôs e que \nmudaram definitivamente a percepção que se tem sobre \neles na literatura e na própria ciência.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Guia do Mochileiro das Galáxias',
+            "contents": [
+                'O Guia do Mochileiro das Galáxias, 1979 \nAutor: Douglas Adams',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91jLVVIrOXL.jpg'), None, put_code('Sinopse do livro: \nSegundos antes de a Terra ser destruída, Arthur Dent \né salvo por Ford Prefect, um E.T. que fazia pesquisa \npara a nova edição de O Guia do Mochileiro das Galá-\nxias. Pegando carona numa nave alienígena, os dois \ndão início a uma alucinante viagem pelo tempo e pelo \nespaço.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Guerra dos Mundos',
+            "contents": [
+                'A Guerra dos Mundos, 18 \nAutora: H. G. Wells',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": '2001: Uma Odisseia no Espaço',
+            "contents": [
+                '2001: Uma Odisseia no Espaço, 1968 \nAutor: Arthur C. Clarke',
+                put_row([put_image('https://d1pkzhm5uq4mnt.cloudfront.net/imagens/capas/5105490dfaf24414291fa510d34817a8dacb8e6f.jpg'), None, put_code('Sinopse do livro: \nNos primórdios da humanidade, quando a fome e os \nprendadores ameaçavam a raça humana, chega à Ter-\nra um objeto inusitado, inacessível à limitada \ncompreensão da mente pré-histórica, mas que influ-\nencia os homens a descobrir coisas que permitem a \nsua própria evolução.\nMilhões de anos depois, a descoberta de um monóli-\nto soterrado na Lua deixa os cientistas perplexos. \nPara investigar esse mistério, a Terra envia ao es-\npaço uma equipe altamente treinada e HAL 9000, uma \ninteligência artificial responsável pelo funciona-\nmento da nave e pela segurança dos tripulantes. Po-\nrém, o surgimento de pequenas falhas levanta a sus-\npeita de que há algo errado com a missão.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Ataque dos Titãs',
+            "contents": [
+                'Ataque dos Titãs, 2009 - 2021 \nAutor: Hajime Isayama',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51gaCkrbPXL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Sutil Arte de Ligar o F*da-Se',
+            "contents": [
+                'A Sutil Arte de Ligar o F*da-Se, 2016 \nAutor: Mark Manson',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/6175IU0qFgL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Dias de um Futuro Esquecido',
+            "contents": [
+                'Dias de um Futuro Esquecido, 2005 \nEscrita por: Chris Claremont \nDesenhada por: John Byrne',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51WHoPtFecL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Harry Potter',
+            "contents": [
+                'Harry Potter, 1998 - 2007 \nAutora: J. K. Rowling',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61WmoSu8RYL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Admirável Mundo Novo',
+            "contents": [
+                'Admirável Mundo Novo, 1932 \nAutor: Aldous Huxley',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61hOp6UFvCL.jpg'), None, put_code('Sinopse do livro: \nUm clássico moderno, o romance distópico de Aldous \nHuxley é incontornável para quem procura um dos \nexemplos mais marcantes da tematização de estados \nautoritários, ao lado de 1984, de George Orwell.\nEle mostra uma sociedade inteiramente organizada \nsegundo princípios científicos, na qual a mera \nmenção das antiquadas palavras “pai” e “mãe” pro-\nduzem repugnância. Um mundo de pessoas programadas \nem laboratório, e adestradas para cumprir seu papel \nnuma sociedade de castas biologicamente definidas \njá no nascimento. Um mundo no qual a literatura, a \nmúsica e o cinema só têm a função de solidificar o \nespírito de conformismo. Um universo que louva o a-\nvanço da técnica, a linha de montagem, a produção \nem série, a uniformidade, e que idolatra Henry Ford. \nEssa é a visão desenvolvida no clarividente romance \nHuxley.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jogos Vorazes',
+            "contents": [
+                'Jogos Vorazes, 2010 \nAutor: Suzanne Collins',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg'), None, put_code('Sinopse do livro: \nPrimeiro de uma bem-sucedida trilogia, comercializa-\nda para mais de 20 países, Jogos Vorazes ganhou elo-\ngios de Stephen King e Sthephanie Meyer, autora da \nsaga Crepúsculo. A história se passa na nação chama-\nda Panem, fundada após o fim da América do Norte. \nFormada por 12 distritos, é comandada com mão de fer-\nro pela Capital, sede do governo. Uma das formas com \nque demonstra seu poder sobre o resto do carente país \né com os Jogos Vorazes, uma competição anual transmi-\ntida ao vivo pela televisão, em que um garoto e uma \ngarota de 12 a 18 anos de cada distrito são selecio-\nnados e obrigados a lutar até a morte. Para evitar \nque sua irmã seja a mais nova vítima do programa, Kat-\nniss se oferece para participar em seu lugar. Vinda \ndo empobrecido Distrito 12, ela sabe como sobreviver em \num ambiente hostil. Caso vença, terá fama e fortuna. Se \nperder, morre. Mas para ganhar a competição, será preci-\nso muito mais do que habilidade. Até onde Katniss estará \ndisposta a ir para ser vitoriosa nos Jogos Vorazes?')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Duna',
+            "contents": [
+                'Duna, 1965 \nAutor: Frank Herbert',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81zN7udGRUL.jpg'), None, put_code('Sinopse do livro: \nUma estonteante mistura de aventura e misticismo, \necologia e política, este romance ganhador dos \nprêmios Hugo e Nebula deu início a uma das mais \népicas histórias de toda a ficção científica. Du-\nna é um triunfo da imaginação, que influenciará a \nliteratura para sempre.Esta edição inédita, com \nintrodução de Neil Gaiman, apresenta ao leitor o \nuniverso fantástico criado por Herbert e que será \nadaptado ao cinema por Denis Villeneuve, diretor \nde A chegada e de Blade Runner 2049.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Akira',
+            "contents": [
+                'Akira, 1982 - 1990 \nAutor: Katsuhiro Otomo',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/915xlyaGXvL.jpg'), None, put_code('Sinopse do mangá: \nAkira é um dos marcos da ficção científica oriental \ne revolucionou a chegada dos mangás e da cultura pop \njaponesa no Ocidente.\nAmbientada em um cenário pós-apocalíptico da Neo-Tó-\nquio, 30 anos depois da III Guerra Mundial, a histó-\nria é centrada nos personagens Kaneda e Tetsuo, mem-\nbros de uma gangue de motoqueiros que se deparam com \no poder sobrenatural de Akira.\nA obra foi escrita e ilustrada por Katsuhiro Otomo e \ntornou-se uma das principais referências da onda cy-\nberpunk década de 1980, ao lado de grandes títulos \ncomo Neuromacer, de William Gibson.')])
+            ]
+        })
+    if xx == 'Faby':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Seleção',
+            "contents": [
+                'A Seleção, 2012 \nAutora: Kiera Cass',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/917W9lLP8qL.jpg'), None, put_code('Sinopse do livro: \nPara trinta e cinco garotas, a Seleção é a chance \nde uma vida. É a oportunidade de ser alçada a um \nmundo de vestidos deslumbrantes e joias valiosas. \nDe morar em um palácio, conquistar o coração do \nbelo príncipe Maxon e um dia ser a rainha.\nAmerica Singer, no entanto, estar entre as Seleci-\nonadas é um pesadelo. Significa deixar para trás o \nrapaz que ama. Abandonar sua família e seu lar para \nentrar em uma disputa ferrenha por uma coroa que \nela não quer. E viver em um palácio sob a ameaça \nconstante de ataques rebeldes.\nEntão America conhece pessoalmente o príncipe - e per-\ncebe que a vida com que sempre sonhou talvez não seja \nnada comparada ao futuro que nunca tinha ousado imagi-\nnar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Culpa é Das Estrelas',
+            "contents": [
+                'A Culpa é Das Estrelas, 2012 \nAutor: John Green',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61oIS8ewc9L.jpg'), None, put_code('Sinopse do livro: \nHazel é uma paciente terminal. Ainda que, por um mi-\nlagre da medicina, seu tumor tenha encolhido bastan-\nte — o que lhe dá a promessa de viver mais alguns \nanos —, o último capítulo de sua história foi escri-\nto no momento do diagnóstico. Mas em todo bom enredo \nhá uma reviravolta, e a de Hazel se chama Augustus \nWaters, um garoto bonito que certo dia aparece no \nGrupo de Apoio a Crianças com Câncer. Juntos, os do-\nis vão preencher o pequeno infinito das páginas em \nbranco de suas vidas.\nInspirador, corajoso, irreverente e brutal, A culpa \né das estrelas é a obra mais ambiciosa e emocionante \nde John Green, sobre a alegria e a tragédia que é vi-\nver e amar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Como eu era Antes de Você',
+            "contents": [
+                'Como eu era Antes de Você, 2013 \nAutora: Jojo Moyes',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61N+EFTFpWL.jpg'), None, put_code('Sinopse do livro: \nAos 26 anos, Louisa Clark não tem muitas ambições. \nEla mora com os pais, a irmã mãe solteira, o sobri-\nnho pequeno e um avô que precisa de cuidados cons-\ntantes desde que sofreu um derrame. Trabalha como \ngarçonete num café, um emprego que não paga muito, \nmas ajuda nas despesas, e namora Patrick, um tria-\ntleta que não parece interessado nela. Não que ela \nse importe.\nQuando o café fecha as portas, Lou é obrigada a pro-\ncurar outro emprego. Sem muitas qualificações, con-\nsegue trabalho como cuidadora de um tetraplégico. \nWill Traynor, de 35 anos, é inteligente, rico e mal-\nhumorado. Preso a uma cadeira de rodas depois de um \nacidente de moto, o antes ativo e esportivo Will des-\nconta toda a sua amargura em quem estiver por perto. \nTudo parece pequeno e sem graça para ele, que sabe \nexatamente como dar um fim a esse sentimento. O que \nWill não sabe é que Lou está prestes a trazer cor a \nsua vida. E nenhum dos dois desconfia de que irá mu-\ndar para sempre a história um do outro.\nComo eu era antes de você é uma história de amor e \numa história de família, mas acima de tudo é uma his-\ntória sobre a coragem e o esforço necessários para \nretomar a vida quando tudo parece acabado.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jogos Vorazes',
+            "contents": [
+                'Jogos Vorazes, 2010 \nAutora: Suzanne Collins',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg'), None, put_code('Sinopse do livro: \nPrimeiro de uma bem-sucedida trilogia, comercializa-\nda para mais de 20 países, Jogos Vorazes ganhou elo-\ngios de Stephen King e Sthephanie Meyer, autora da \nsaga Crepúsculo. A história se passa na nação chama-\nda Panem, fundada após o fim da América do Norte. \nFormada por 12 distritos, é comandada com mão de fer-\nro pela Capital, sede do governo. Uma das formas com \nque demonstra seu poder sobre o resto do carente país \né com os Jogos Vorazes, uma competição anual transmi-\ntida ao vivo pela televisão, em que um garoto e uma \ngarota de 12 a 18 anos de cada distrito são selecio-\nnados e obrigados a lutar até a morte. Para evitar \nque sua irmã seja a mais nova vítima do programa, Kat-\nniss se oferece para participar em seu lugar. Vinda \ndo empobrecido Distrito 12, ela sabe como sobreviver em \num ambiente hostil. Caso vença, terá fama e fortuna. Se \nperder, morre. Mas para ganhar a competição, será preci-\nso muito mais do que habilidade. Até onde Katniss estará \ndisposta a ir para ser vitoriosa nos Jogos Vorazes?')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Toda Sua',
+            "contents": [
+                'Toda Sua, 2012 \nAutora: Sylvia Day',
+                put_row([put_image('https://m.media-amazon.com/images/P/B009WW56UG.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Daqui a Cinco Anos',
+            "contents": [
+                'Daqui a Cinco Anos, 2020 \nAutora: Rebecca Serle',
+                put_row([put_image('https://m.media-amazon.com/images/P/B08B6DCHS3.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do livro: \nOnde você se vê daqui a cinco anos? Dannie Kohan sa-\nbe exatamente o futuro que deseja e o que deve fazer \npara conquistá-lo. Depois de arrasar na entrevista \npara seu emprego dos sonhos em um dos maiores escri-\ntórios de advocacia de Nova York e de ser pedida em \ncasamento pelo namorado, ela vai dormir com a certe-\nza de que está no caminho certo para realizar todos \nos seus planos.\nQuando acorda, entretanto, ela está em um apartamen-\nto diferente, com outro anel de noivado no dedo e um \nhomem que nunca viu antes ao seu lado. A televisão \nmostra que é a mesma noite — 15 de dezembro —, mas \ncinco anos no futuro.\nDepois de uma hora intensa e chocante nesse cenário, \nDannie acorda de novo, de volta ao presente, como se \nnada tivesse acontecido. Profundamente abalada e sem \nentender o que houve, ela decide acreditar que foi \napenas um sonho, por mais realista que tenha sido. E \nparece funcionar. Isto é, até quatro anos e meio de-\npois, quando  Dannie encontra o homem que viu naquela \nnoite inusitada.\nAo mesmo tempo divertida e emocionante, Daqui a cinco \nanos é uma história sobre lealdade, amor, amizade e a \nnatureza imprevisível do futuro. ')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Morro dos Ventos Uivantes',
+            "contents": [
+                'O Morro dos Ventos Uivantes, 1847 \nAutora: Emily Brontë',
+                put_row([put_image('https://www.pimpao.com.br/estatico/pimpao/images/produto/omorrodosventosuivanteslivro.jpeg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Orgulho e Preconceito',
+            "contents": [
+                'Orgulho e Preconceito, 1817 \nAutor: Jane Austen',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/719esIW3D7L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'É assim que Acaba',
+            "contents": [
+                'É assim que Acaba, 2016 \nAutora: Colleen Hoover',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91r5G8RxqfL.jpg'), None, put_code('Sinopse do livro: \nEm É assim que acaba, Colleen Hoover nos apresenta \nLily, uma jovem que se mudou de uma cidadezinha do \nMaine para Boston, se formou em marketing e abriu \na própria floricultura. E é em um dos terraços de \nBoston que ela conhece Ryle, um neurocirurgião con-\nfiante, teimoso e talvez até um pouco arrogante, com \numa grande aversão a relacionamentos, mas que se sen-\nte muito atraído por ela.\nQuando os dois se apaixonam, Lily se vê no meio de \num relacionamento turbulento que não é o que ela es-\nperava. Mas será que ela conseguirá enxergar isso, \npor mais doloroso que seja?\nÉ assim que acaba é uma narrativa poderosa sobre a \nforça necessária para fazer as escolhas certas nas \nsituações mais difíceis. Considerada a obra mais \npessoal de Hoover, o livro aborda sem medo alguns \ntabus da sociedade para explorar a complexidade das \nrelações tóxicas, e como o amor e o abuso muitas \nvezes coexistem em uma confusão de sentimentos.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jane Eyre',
+            "contents": [
+                'Jane Eyre, 1847 \nAutor: Charlotte Brontë',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91Jm5zoM0EL.jpg'), None, put_code('Sinopse do livro: \nJane Eyre, romance de estreia da consagrada e reno-\nmada escritora inglesa Charlotte Brontë, narra a \nhistória de vida da heroína homônima. Quebrando pa-\nradigmas e criticando a realidade vitoriana da época, \nJane Eyre desafia o destino imposto às mulheres e as \nposições sociais que elas deveriam ocupar. Recheado \nde características góticas, o romance possui persona-\ngens inesquecíveis e transformadores, como a figura \ndo misterioso Rochester, patrão de Jane e peça vital \nda narrativa.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Quem é Você, Alasca?',
+            "contents": [
+                'Quem é Você, Alasca?, 2005 \nAutor: John Green',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41-Pl1SsqIL._SX331_BO1,204,203,200_.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Dezesseis Luas',
+            "contents": [
+                'Dezesseis Luas, 2009 - 1990 \nAutoras: Margaret Stohl e Kami Garcia',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71lX0Bl-pDL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+    if xx == 'Bella':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Seleção',
+            "contents": [
+                'A Seleção, 2012 \nAutora: Kiera Cass',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/917W9lLP8qL.jpg'), None, put_code('Sinopse do livro: \nPara trinta e cinco garotas, a Seleção é a chance \nde uma vida. É a oportunidade de ser alçada a um \nmundo de vestidos deslumbrantes e joias valiosas. \nDe morar em um palácio, conquistar o coração do \nbelo príncipe Maxon e um dia ser a rainha.\nAmerica Singer, no entanto, estar entre as Seleci-\nonadas é um pesadelo. Significa deixar para trás o \nrapaz que ama. Abandonar sua família e seu lar para \nentrar em uma disputa ferrenha por uma coroa que \nela não quer. E viver em um palácio sob a ameaça \nconstante de ataques rebeldes.\nEntão America conhece pessoalmente o príncipe - e per-\ncebe que a vida com que sempre sonhou talvez não seja \nnada comparada ao futuro que nunca tinha ousado imagi-\nnar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Dom Casmurro',
+            "contents": [
+                'Dom Casmurro, 1899 \nAutora: Machado de Assis',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/613Ywe4F3vL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Duna',
+            "contents": [
+                'Duna, 1965 \nAutor: Frank Herbert',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81zN7udGRUL.jpg'), None, put_code('Sinopse do livro: \nUma estonteante mistura de aventura e misticismo, \necologia e política, este romance ganhador dos \nprêmios Hugo e Nebula deu início a uma das mais \népicas histórias de toda a ficção científica. Du-\nna é um triunfo da imaginação, que influenciará a \nliteratura para sempre.Esta edição inédita, com \nintrodução de Neil Gaiman, apresenta ao leitor o \nuniverso fantástico criado por Herbert e que será \nadaptado ao cinema por Denis Villeneuve, diretor \nde A chegada e de Blade Runner 2049.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Culpa é Das Estrelas',
+            "contents": [
+                'A Culpa é Das Estrelas, 2012 \nAutor: John Green',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61oIS8ewc9L.jpg'), None, put_code('Sinopse do livro: \nHazel é uma paciente terminal. Ainda que, por um mi-\nlagre da medicina, seu tumor tenha encolhido bastan-\nte — o que lhe dá a promessa de viver mais alguns \nanos —, o último capítulo de sua história foi escri-\nto no momento do diagnóstico. Mas em todo bom enredo \nhá uma reviravolta, e a de Hazel se chama Augustus \nWaters, um garoto bonito que certo dia aparece no \nGrupo de Apoio a Crianças com Câncer. Juntos, os do-\nis vão preencher o pequeno infinito das páginas em \nbranco de suas vidas.\nInspirador, corajoso, irreverente e brutal, A culpa \né das estrelas é a obra mais ambiciosa e emocionante \nde John Green, sobre a alegria e a tragédia que é vi-\nver e amar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Como eu era Antes de Você',
+            "contents": [
+                'Como eu era Antes de Você, 2013 \nAutora: Jojo Moyes',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61N+EFTFpWL.jpg'), None, put_code('Sinopse do livro: \nAos 26 anos, Louisa Clark não tem muitas ambições. \nEla mora com os pais, a irmã mãe solteira, o sobri-\nnho pequeno e um avô que precisa de cuidados cons-\ntantes desde que sofreu um derrame. Trabalha como \ngarçonete num café, um emprego que não paga muito, \nmas ajuda nas despesas, e namora Patrick, um tria-\ntleta que não parece interessado nela. Não que ela \nse importe.\nQuando o café fecha as portas, Lou é obrigada a pro-\ncurar outro emprego. Sem muitas qualificações, con-\nsegue trabalho como cuidadora de um tetraplégico. \nWill Traynor, de 35 anos, é inteligente, rico e mal-\nhumorado. Preso a uma cadeira de rodas depois de um \nacidente de moto, o antes ativo e esportivo Will des-\nconta toda a sua amargura em quem estiver por perto. \nTudo parece pequeno e sem graça para ele, que sabe \nexatamente como dar um fim a esse sentimento. O que \nWill não sabe é que Lou está prestes a trazer cor a \nsua vida. E nenhum dos dois desconfia de que irá mu-\ndar para sempre a história um do outro.\nComo eu era antes de você é uma história de amor e \numa história de família, mas acima de tudo é uma his-\ntória sobre a coragem e o esforço necessários para \nretomar a vida quando tudo parece acabado.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Piece',
+            "contents": [
+                'One Piece, desde de 1997 \nAutor: Eiichiro Oda',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Sutil Arte de Ligar o F*da-Se',
+            "contents": [
+                'A Sutil Arte de Ligar o F*da-Se, 2016 \nAutor: Mark Manson',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/6175IU0qFgL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Inferno de Gabriel',
+            "contents": [
+                'O Inferno de Gabriel, 2013 \nAutora: Sylvain Reynard',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81Ez83pBBqL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jogos Vorazes',
+            "contents": [
+                'Jogos Vorazes, 2010 \nAutora: Suzanne Collins',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg'), None, put_code('Sinopse do livro: \nPrimeiro de uma bem-sucedida trilogia, comercializa-\nda para mais de 20 países, Jogos Vorazes ganhou elo-\ngios de Stephen King e Sthephanie Meyer, autora da \nsaga Crepúsculo. A história se passa na nação chama-\nda Panem, fundada após o fim da América do Norte. \nFormada por 12 distritos, é comandada com mão de fer-\nro pela Capital, sede do governo. Uma das formas com \nque demonstra seu poder sobre o resto do carente país \né com os Jogos Vorazes, uma competição anual transmi-\ntida ao vivo pela televisão, em que um garoto e uma \ngarota de 12 a 18 anos de cada distrito são selecio-\nnados e obrigados a lutar até a morte. Para evitar \nque sua irmã seja a mais nova vítima do programa, Kat-\nniss se oferece para participar em seu lugar. Vinda \ndo empobrecido Distrito 12, ela sabe como sobreviver em \num ambiente hostil. Caso vença, terá fama e fortuna. Se \nperder, morre. Mas para ganhar a competição, será preci-\nso muito mais do que habilidade. Até onde Katniss estará \ndisposta a ir para ser vitoriosa nos Jogos Vorazes?')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Orgulho e Preconceito',
+            "contents": [
+                'Orgulho e Preconceito, 1817 \nAutor: Jane Austen',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/719esIW3D7L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Cinquenta Tons de Cinza',
+            "contents": [
+                'Cinquenta Tons de Cinza, 2012 \nAutora: E. L. James',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/713-3IbW7WL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Os Bridgertons',
+            "contents": [
+                "Os Bridgertons, 2000 - 2013 \nAutora: Julia Quinn",
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71r-wFJ-xBS.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Toda Sua',
+            "contents": [
+                'Toda Sua, 2012 \nAutora: Sylvia Day',
+                put_row([put_image('https://m.media-amazon.com/images/P/B009WW56UG.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Morro dos Ventos Uivantes',
+            "contents": [
+                'O Morro dos Ventos Uivantes, 1847 \nAutora: Emily Brontë',
+                put_row([put_image('https://www.pimpao.com.br/estatico/pimpao/images/produto/omorrodosventosuivanteslivro.jpeg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Anna Karenina',
+            "contents": [
+                'Anna Karenina, 1878 \nAutor: Leo Tolstoy',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61hlBIot81L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Madame Bovary',
+            "contents": [
+                'Madame Bovary, 1856 \nAutora: Gustave Flaubert',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71DQbr5bBYL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jane Eyre',
+            "contents": [
+                'Jane Eyre, 1847 \nAutor: Charlotte Brontë',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91Jm5zoM0EL.jpg'), None, put_code('Sinopse do livro: \nJane Eyre, romance de estreia da consagrada e reno-\nmada escritora inglesa Charlotte Brontë, narra a \nhistória de vida da heroína homônima. Quebrando pa-\nradigmas e criticando a realidade vitoriana da época, \nJane Eyre desafia o destino imposto às mulheres e as \nposições sociais que elas deveriam ocupar. Recheado \nde características góticas, o romance possui persona-\ngens inesquecíveis e transformadores, como a figura \ndo misterioso Rochester, patrão de Jane e peça vital \nda narrativa.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Mrs. Dalloway',
+            "contents": [
+                'Mrs. Dalloway, 1925 \nAutora: Virginia Woolf',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91p8b+cOW0L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Anne de Green Gables',
+            "contents": [
+                'Anne de Green Gables, 1908 \nAutora: L. M. Montgomery',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91r32tjyFBL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Através da Minha Janela',
+            "contents": [
+                'Através da Minha Janela, 2022 \nAutora: Ariana Godoy',
+                put_row([put_image('https://m.media-amazon.com/images/P/B09Q6ZNRC6.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+    if xx == 'Gaby':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Harry Potter',
+            "contents": [
+                'Harry Potter, 1998 - 2007 \nAutora: J. K. Rowling',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61WmoSu8RYL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Máquina do Tempo',
+            "contents": [
+                'A Máquina do Tempo, 1895 \nAutor: H. G Wells',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91XAnKe28UL.jpg'), None, put_code('Sinopse do livro: \nO personagem conhecido apenas como "O viajante do \ntempo", desenvolve com bases em conceitos matemá-\nticos uma máquina capaz de se mover pela quarta \ndimensão, a dimensão do tempo. Com ela, viaja até \nao ano de 802.701 D.C onde encontra seres remanes-\ncentes dos humanos, aparentemente vivendo num mun-\ndo paradisíaco, até perceber que eles, na realida-\nde, servem de alimentos para uma outra raça.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Naruto Gold',
+            "contents": [
+                'Naruto Gold, 1999 - 2014 \nAutor e ilustrador: Masashi Kishimoto',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91xUwI2UEVL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Percy Jackson',
+            "contents": [
+                'Percy Jackson, 2005 - 2009 \nAutor: Rick Riordan',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81x1ZJ1IkoS.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Cavaleiro das Trevas',
+            "contents": [
+                'O Cavaleiro das Trevas, 2011 \nAutor: Frank Miller',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41QD9uNo23L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Eu, robô',
+            "contents": [
+                'Eu, robô, 1950 \nAutor: Isaac Asimov',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/414QJOKvD+L.jpg'), None, put_code('Sinopse do livro: \nVerdadeiro marco na história da ficção científica, \nEu, robô reúne os primeiros textos de Isaac Asimov \nsobre robôs, publicados entre 1940 e 1950. São no-\nve contos que relatam a evolução dos autômatos a-\ntravés do tempo, e que contêm em suas páginas, pela \nprimeira vez, as célebres Três Leis da Robótica: os \nprincípios que regem o comportamento dos robôs e que \nmudaram definitivamente a percepção que se tem sobre \neles na literatura e na própria ciência.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Duna',
+            "contents": [
+                'Duna, 1965 \nAutor: Frank Herbert',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81zN7udGRUL.jpg'), None, put_code('Sinopse do livro: \nUma estonteante mistura de aventura e misticismo, \necologia e política, este romance ganhador dos \nprêmios Hugo e Nebula deu início a uma das mais \népicas histórias de toda a ficção científica. Du-\nna é um triunfo da imaginação, que influenciará a \nliteratura para sempre.Esta edição inédita, com \nintrodução de Neil Gaiman, apresenta ao leitor o \nuniverso fantástico criado por Herbert e que será \nadaptado ao cinema por Denis Villeneuve, diretor \nde A chegada e de Blade Runner 2049.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Piece',
+            "contents": [
+                'One Piece, desde de 1997 \nAutor: Eiichiro Oda',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jogos Vorazes',
+            "contents": [
+                'Jogos Vorazes, 2010 \nAutora: Suzanne Collins',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg'), None, put_code('Sinopse do livro: \nPrimeiro de uma bem-sucedida trilogia, comercializa-\nda para mais de 20 países, Jogos Vorazes ganhou elo-\ngios de Stephen King e Sthephanie Meyer, autora da \nsaga Crepúsculo. A história se passa na nação chama-\nda Panem, fundada após o fim da América do Norte. \nFormada por 12 distritos, é comandada com mão de fer-\nro pela Capital, sede do governo. Uma das formas com \nque demonstra seu poder sobre o resto do carente país \né com os Jogos Vorazes, uma competição anual transmi-\ntida ao vivo pela televisão, em que um garoto e uma \ngarota de 12 a 18 anos de cada distrito são selecio-\nnados e obrigados a lutar até a morte. Para evitar \nque sua irmã seja a mais nova vítima do programa, Kat-\nniss se oferece para participar em seu lugar. Vinda \ndo empobrecido Distrito 12, ela sabe como sobreviver em \num ambiente hostil. Caso vença, terá fama e fortuna. Se \nperder, morre. Mas para ganhar a competição, será preci-\nso muito mais do que habilidade. Até onde Katniss estará \ndisposta a ir para ser vitoriosa nos Jogos Vorazes?')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'As Crônicas de Nárnia',
+            "contents": [
+                'As Crônicas de Nárnia, 1950 - 1956 \nAutor: C. S. Lewis',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71yJLhQekBL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Trono de Vidro',
+            "contents": [
+                'Trono de Vidro, 2012 \nAutora: Sarah J. Maas',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81f1oA6voPL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Fullmetal Alchemist',
+            "contents": [
+                'Fullmetal Alchemist, 2001 - 2010 \nAutora: Hiromu Arakawa',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61yvu+BbxvL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O príncipe cruel',
+            "contents": [
+                'O príncipe crue, 2018 \nAutora: Holly Black',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81FH6q0EqYS.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Estilhaça-me',
+            "contents": [
+                'Estilhaça-me, 2011 \nAutor: Tahereh Mafi',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71t558uD09L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Os Instrumentos Mortais',
+            "contents": [
+                'Os Instrumentos Mortais, 2007 \nAutor: Cassandra Clare',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81sAo9G+oxL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Sailor Moon',
+            "contents": [
+                'Sailor Moon, 1991 - 1997 \nAutora e Ilustradora: Naoko Takeuchi',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61MpR3iy+hL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Turma da Mônica',
+            "contents": [
+                'Turma da Mônica, desde de 1970 \nAutor: Mauricio de Sousa',
+                put_row([put_image('https://lojasaraiva.vteximg.com.br/arquivos/ids/2013479/1002933478.jpg?v=637006603234230000'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Seleção',
+            "contents": [
+                'A Seleção, 2012 \nAutora: Kiera Cass',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/917W9lLP8qL.jpg'), None, put_code('Sinopse do livro: \nPara trinta e cinco garotas, a Seleção é a chance \nde uma vida. É a oportunidade de ser alçada a um \nmundo de vestidos deslumbrantes e joias valiosas. \nDe morar em um palácio, conquistar o coração do \nbelo príncipe Maxon e um dia ser a rainha.\nAmerica Singer, no entanto, estar entre as Seleci-\nonadas é um pesadelo. Significa deixar para trás o \nrapaz que ama. Abandonar sua família e seu lar para \nentrar em uma disputa ferrenha por uma coroa que \nela não quer. E viver em um palácio sob a ameaça \nconstante de ataques rebeldes.\nEntão America conhece pessoalmente o príncipe - e per-\ncebe que a vida com que sempre sonhou talvez não seja \nnada comparada ao futuro que nunca tinha ousado imagi-\nnar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Ataque dos Titãs',
+            "contents": [
+                'Ataque dos Titãs, 2009 - 2021 \nAutor: Hajime Isayama',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51gaCkrbPXL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+    if xx == 'Lindina':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Naruto Gold',
+            "contents": [
+                'Naruto Gold, 1999 - 2014 \nAutor e ilustrador: Masashi Kishimoto',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91xUwI2UEVL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Ataque dos Titãs',
+            "contents": [
+                'Ataque dos Titãs, 2009 - 2021 \nAutor: Hajime Isayama',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51gaCkrbPXL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Cavaleiro das Trevas',
+            "contents": [
+                'O Cavaleiro das Trevas, 2011 \nAutor: Frank Miller',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41QD9uNo23L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Máquina do Tempo',
+            "contents": [
+                'A Máquina do Tempo, 1895 \nAutor: H. G Wells',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91XAnKe28UL.jpg'), None, put_code('Sinopse do livro: \nO personagem conhecido apenas como "O viajante do \ntempo", desenvolve com bases em conceitos matemá-\nticos uma máquina capaz de se mover pela quarta \ndimensão, a dimensão do tempo. Com ela, viaja até \nao ano de 802.701 D.C onde encontra seres remanes-\ncentes dos humanos, aparentemente vivendo num mun-\ndo paradisíaco, até perceber que eles, na realida-\nde, servem de alimentos para uma outra raça.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Androides Sonham com Ovelhas Elétricas?',
+            "contents": [
+                'O Androides Sonham com Ovelhas Elétricas?, 2022 \nAutora: Ariana Godoy',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Kimetsu no Yaiba',
+            "contents": [
+                'Kimetsu no Yaiba, 2016 - 2020 \nAutora: Koyoharu Gotōge',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51W6wPKu6JL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Death Note',
+            "contents": [
+                'Death Note, 2003 - 2006 \nAutor: Takeshi Obata',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Jogos Vorazes',
+            "contents": [
+                'Jogos Vorazes, 2010 \nAutor: Suzanne Collins',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61zBhzjS4LL.jpg'), None, put_code('Sinopse do livro: \nPrimeiro de uma bem-sucedida trilogia, comercializa-\nda para mais de 20 países, Jogos Vorazes ganhou elo-\ngios de Stephen King e Sthephanie Meyer, autora da \nsaga Crepúsculo. A história se passa na nação chama-\nda Panem, fundada após o fim da América do Norte. \nFormada por 12 distritos, é comandada com mão de fer-\nro pela Capital, sede do governo. Uma das formas com \nque demonstra seu poder sobre o resto do carente país \né com os Jogos Vorazes, uma competição anual transmi-\ntida ao vivo pela televisão, em que um garoto e uma \ngarota de 12 a 18 anos de cada distrito são selecio-\nnados e obrigados a lutar até a morte. Para evitar \nque sua irmã seja a mais nova vítima do programa, Kat-\nniss se oferece para participar em seu lugar. Vinda \ndo empobrecido Distrito 12, ela sabe como sobreviver em \num ambiente hostil. Caso vença, terá fama e fortuna. Se \nperder, morre. Mas para ganhar a competição, será preci-\nso muito mais do que habilidade. Até onde Katniss estará \ndisposta a ir para ser vitoriosa nos Jogos Vorazes?')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Sailor Moon',
+            "contents": [
+                'Sailor Moon, 1991 - 1997 \nAutora e Ilustradora: Naoko Takeuchi',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61MpR3iy+hL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Akira',
+            "contents": [
+                'Akira, 1982 - 1990 \nAutor: Katsuhiro Otomo',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/915xlyaGXvL.jpg'), None, put_code('Sinopse do mangá: \nAkira é um dos marcos da ficção científica oriental \ne revolucionou a chegada dos mangás e da cultura pop \njaponesa no Ocidente.\nAmbientada em um cenário pós-apocalíptico da Neo-Tó-\nquio, 30 anos depois da III Guerra Mundial, a histó-\nria é centrada nos personagens Kaneda e Tetsuo, mem-\nbros de uma gangue de motoqueiros que se deparam com \no poder sobrenatural de Akira.\nA obra foi escrita e ilustrada por Katsuhiro Otomo e \ntornou-se uma das principais referências da onda cy-\nberpunk década de 1980, ao lado de grandes títulos \ncomo Neuromacer, de William Gibson.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Fullmetal Alchemist',
+            "contents": [
+                'Fullmetal Alchemist, 2001 - 2010 \nAutora: Hiromu Arakawa',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61yvu+BbxvL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Piece',
+            "contents": [
+                'One Piece, desde de 1997 \nAutor: Eiichiro Oda',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Harry Potter',
+            "contents": [
+                'Harry Potter, 1998 - 2007 \nAutora: J. K. Rowling',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61WmoSu8RYL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Guia do Mochileiro das Galáxias',
+            "contents": [
+                'O Guia do Mochileiro das Galáxias, 1979 \nAutor: Douglas Adams',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91jLVVIrOXL.jpg'), None, put_code('Sinopse do livro: \nSegundos antes de a Terra ser destruída, Arthur Dent \né salvo por Ford Prefect, um E.T. que fazia pesquisa \npara a nova edição de O Guia do Mochileiro das Galá-\nxias. Pegando carona numa nave alienígena, os dois \ndão início a uma alucinante viagem pelo tempo e pelo \nespaço.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Espetacular Homem-Aranha',
+            "contents": [
+                'O Espetacular Homem-Aranha, 2019 \nAutores: Stan Lee e Steve Ditko',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/812NccMXDLL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+    if xx == 'Ayrton':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O milagre da manhã',
+            "contents": [
+                'O milagre da manhã, 2016 \nAutor: Hal Elrod',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41zcA8iynSL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Poder do Hábito',
+            "contents": [
+                'O Poder do Hábito, 2012 \nAutor: Charles Duhigg',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81XTXQEVPlL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Guerra dos Mundos',
+            "contents": [
+                'A Guerra dos Mundos, 18 \nAutora: H. G. Wells',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Sutil Arte de Ligar o F*da-Se',
+            "contents": [
+                'A Sutil Arte de Ligar o F*da-Se, 2016 \nAutor: Mark Manson',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/6175IU0qFgL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Cabana',
+            "contents": [
+                'A Cabana, 2007 \nAutor: William P. Young',
+                put_row([put_image('https://m.media-amazon.com/images/P/B01NAU1MWU.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Esteja, Viva, Permaneça 100% Presente',
+            "contents": [
+                'Esteja, Viva, Permaneça 100% Presente, 2019 \nAutor: Joel Moraes',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07WW2FG4L.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Todas as suas (im)perfeições',
+            "contents": [
+                'Todas as suas (im)perfeições, 2019 \nAutor: Colleen Hoover',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81Vhnel+xxL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Senhor dos Anéis',
+            "contents": [
+                'O Senhor dos Anéis, 2012 \nAutora: E. L. James',
+                put_row([put_image(''), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Por que Fazemos o que Fazemos?',
+            "contents": [
+                'Por que Fazemos o que Fazemos?, 2016 \nAutor: Mario Sergio',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/8195vftI5IL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Espetacular Homem-Aranha',
+            "contents": [
+                'O Espetacular Homem-Aranha, 2019 \nAutores: Stan Lee e Steve Ditko',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/812NccMXDLL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Watchmen',
+            "contents": [
+                'Watchmen, 2022 \nAutores: Alan Moore e Dave Gibbons',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81IOAiyRD+L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+    if xx == 'Margareth':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Cinquenta Tons de Cinza',
+            "contents": [
+                'Cinquenta Tons de Cinza, 2012 \nAutora: E. L. James',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/713-3IbW7WL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Inferno de Gabriel',
+            "contents": [
+                'O Inferno de Gabriel, 2013 \nAutora: Sylvain Reynard',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81Ez83pBBqL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Toda Sua',
+            "contents": [
+                'Toda Sua, 2012 \nAutora: Sylvia Day',
+                put_row([put_image('https://m.media-amazon.com/images/P/B009WW56UG.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Através da Minha Janela',
+            "contents": [
+                'Através da Minha Janela, 2022 \nAutora: Ariana Godoy',
+                put_row([put_image('https://m.media-amazon.com/images/P/B09Q6ZNRC6.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'After',
+            "contents": [
+                'After, 2014 \nAutora: Anna Todd',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/810FrINgfYS.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Anna Karenina',
+            "contents": [
+                'Anna Karenina, 1878 \nAutor: Leo Tolstoy',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61hlBIot81L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Culpa é Das Estrelas',
+            "contents": [
+                'A Culpa é Das Estrelas, 2012 \nAutor: John Green',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61oIS8ewc9L.jpg'), None, put_code('Sinopse do livro: \nHazel é uma paciente terminal. Ainda que, por um mi-\nlagre da medicina, seu tumor tenha encolhido bastan-\nte — o que lhe dá a promessa de viver mais alguns \nanos —, o último capítulo de sua história foi escri-\nto no momento do diagnóstico. Mas em todo bom enredo \nhá uma reviravolta, e a de Hazel se chama Augustus \nWaters, um garoto bonito que certo dia aparece no \nGrupo de Apoio a Crianças com Câncer. Juntos, os do-\nis vão preencher o pequeno infinito das páginas em \nbranco de suas vidas.\nInspirador, corajoso, irreverente e brutal, A culpa \né das estrelas é a obra mais ambiciosa e emocionante \nde John Green, sobre a alegria e a tragédia que é vi-\nver e amar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Inferno de Gabriel',
+            "contents": [
+                'O Inferno de Gabriel, 2013 \nAutora: Sylvain Reynard',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81Ez83pBBqL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Doce Mentira',
+            "contents": [
+                'Doce Mentira, 2019 \nAutora: Kendall Ryan',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07BSLWLPV.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Vênus das Peles',
+            "contents": [
+                'Vênus das Peles, 1870 \nAutor: Sacher-Masoch',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71i8mEfNpVL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Os Bridgertons',
+            "contents": [
+                "Os Bridgertons, 2000 - 2013 \nAutora: Julia Quinn",
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71r-wFJ-xBS.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": '100 escovadas antes de ir para cama',
+            "contents": [
+                '100 escovadas antes de ir para cama, 2004 \nAutor: Melissa Panarello',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81XxST6Tc6L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+    if xx == 'Eliseu':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Cavaleiro das Trevas',
+            "contents": [
+                'O Cavaleiro das Trevas, 2011 \nAutor: Frank Miller',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/41QD9uNo23L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Androides Sonham com Ovelhas Elétricas?',
+            "contents": [
+                'O Androides Sonham com Ovelhas Elétricas?, 2022 \nAutora: Ariana Godoy',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Watchmen',
+            "contents": [
+                'Watchmen, 2022 \nAutores: Alan Moore e Dave Gibbons',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81IOAiyRD+L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Piece',
+            "contents": [
+                'One Piece, desde de 1997 \nAutor: Eiichiro Oda',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Fullmetal Alchemist',
+            "contents": [
+                'Fullmetal Alchemist, 2001 - 2010 \nAutora: Hiromu Arakawa',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61yvu+BbxvL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Espetacular Homem-Aranha',
+            "contents": [
+                'O Espetacular Homem-Aranha, 2019 \nAutores: Stan Lee e Steve Ditko',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/812NccMXDLL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Dias de um Futuro Esquecido',
+            "contents": [
+                'Dias de um Futuro Esquecido, 2005 \nEscrita por: Chris Claremont \nDesenhada por: John Byrne',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51WHoPtFecL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Maus: a história de um sobrevivente',
+            "contents": [
+                'Maus: a história de um sobrevivente, 2005 \nAutor: Art Spiegelman',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/916IgqQ-54L.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Guerra dos Mundos',
+            "contents": [
+                'A Guerra dos Mundos, 18 \nAutora: H. G. Wells',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Do Inferno',
+            "contents": [
+                'Do Inferno, 2014 \nAutores: Alan Moore e Eddie Campbell',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71Tz+3U5xtL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Mundo Fantasma',
+            "contents": [
+                "Mundo Fantasma, 2011 \nAutor: Daniel Clowes",
+                put_row([put_image('https://images.universohq.com/2011/09/MUNDO-FANTASMA.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+    if xx == 'Anthony':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Turma da Mônica',
+            "contents": [
+                'Turma da Mônica, desde de 1970 \nAutor: Mauricio de Sousa',
+                put_row([put_image('https://lojasaraiva.vteximg.com.br/arquivos/ids/2013479/1002933478.jpg?v=637006603234230000'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Fullmetal Alchemist',
+            "contents": [
+                'Fullmetal Alchemist, 2001 - 2010 \nAutora: Hiromu Arakawa',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61yvu+BbxvL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Piece',
+            "contents": [
+                'One Piece, desde de 1997 \nAutor: Eiichiro Oda',
+                put_row([put_image('https://m.media-amazon.com/images/P/B07S1P3XDZ.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Espetacular Homem-Aranha',
+            "contents": [
+                'O Espetacular Homem-Aranha, 2019 \nAutores: Stan Lee e Steve Ditko',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/812NccMXDLL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Dragon Ball',
+            "contents": [
+                'Dragon Ball, 1984 - 1995 \nAutor: Akira Toriyama',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51bBdrgiEfL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Menino Maluquinho',
+            "contents": [
+                'O Menino Maluquinho, 1980 \nAutor: Ziraldo Alves Pinto',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/911o1h5gIzL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Scott Pilgrim Contra Mundo',
+            "contents": [
+                "Scott Pilgrim Contra Mundo, 2010 \nAutor: Bryan Lee O'Malley",
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81kwlJ1pcpL.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Mundo Fantasma',
+            "contents": [
+                "Mundo Fantasma, 2011 \nAutor: Daniel Clowes",
+                put_row([put_image('https://images.universohq.com/2011/09/MUNDO-FANTASMA.jpg'), None, put_code('Sinopse da HQ: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Naruto Gold',
+            "contents": [
+                'Naruto Gold, 1999 - 2014 \nAutor e ilustrador: Masashi Kishimoto',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91xUwI2UEVL.jpg'), None, put_code('Sinopse do mangá: \n')])
+            ]
+        })
+    if xx == 'Teodoro':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Buriti Mirim',
+            "contents": [
+                'Buriti Mirim, 2017 \nPor: Varios autores',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/517OlDMOUjL.jpg'), None, put_code('Sobre o livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Caderno do Futuro',
+            "contents": [
+                'Caderno do Futuro, desde 2002 \nAutoras: Celia Passos e Zeneide Silva.',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81sGWhCqkuL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Computação no Ensino Fundamental',
+            "contents": [
+                'Computação no Ensino Fundamental, 2018 \nAutor: ',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Poder do Hábito',
+            "contents": [
+                'O Poder do Hábito, 2012 \nAutor: Charles Duhigg',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81XTXQEVPlL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Literatura na Escola',
+            "contents": [
+                'Literatura na Escola, 2022 \nAutores: Marcel Alvaro de Amorim, Diego Domingues, Débora Ventura Klayn e Tiago Cavalcante da Silva',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61sKz5+WN+L.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Aprender Juntos',
+            "contents": [
+                'Aprender Juntos, 2021 \nAutores: Cínthia Cardosa de Siqueira, Denise Guilherme Viotto, Elizabeth Gaviolo de Oliveira Silva e Márcia Cristina Abromovick.',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71i7RJBYzOL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Convergências. Matemática.',
+            "contents": [
+                'Convergências. Matemática., 2016 \nAutor: Eduardo Chavante.',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71vPSPvS7xL.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+    if xx == 'Malu':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Seleção',
+            "contents": [
+                'A Seleção, 2012 \nAutora: Kiera Cass',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/917W9lLP8qL.jpg'), None, put_code('Sinopse do livro: \nPara trinta e cinco garotas, a Seleção é a chance \nde uma vida. É a oportunidade de ser alçada a um \nmundo de vestidos deslumbrantes e joias valiosas. \nDe morar em um palácio, conquistar o coração do \nbelo príncipe Maxon e um dia ser a rainha.\nAmerica Singer, no entanto, estar entre as Seleci-\nonadas é um pesadelo. Significa deixar para trás o \nrapaz que ama. Abandonar sua família e seu lar para \nentrar em uma disputa ferrenha por uma coroa que \nela não quer. E viver em um palácio sob a ameaça \nconstante de ataques rebeldes.\nEntão America conhece pessoalmente o príncipe - e per-\ncebe que a vida com que sempre sonhou talvez não seja \nnada comparada ao futuro que nunca tinha ousado imagi-\nnar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Culpa é Das Estrelas',
+            "contents": [
+                'A Culpa é Das Estrelas, 2012 \nAutor: John Green',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61oIS8ewc9L.jpg'), None, put_code('Sinopse do livro: \nHazel é uma paciente terminal. Ainda que, por um mi-\nlagre da medicina, seu tumor tenha encolhido bastan-\nte — o que lhe dá a promessa de viver mais alguns \nanos —, o último capítulo de sua história foi escri-\nto no momento do diagnóstico. Mas em todo bom enredo \nhá uma reviravolta, e a de Hazel se chama Augustus \nWaters, um garoto bonito que certo dia aparece no \nGrupo de Apoio a Crianças com Câncer. Juntos, os do-\nis vão preencher o pequeno infinito das páginas em \nbranco de suas vidas.\nInspirador, corajoso, irreverente e brutal, A culpa \né das estrelas é a obra mais ambiciosa e emocionante \nde John Green, sobre a alegria e a tragédia que é vi-\nver e amar.')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Os Bridgertons',
+            "contents": [
+                "Os Bridgertons, 2000 - 2013 \nAutora: Julia Quinn",
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71r-wFJ-xBS.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Toda Sua',
+            "contents": [
+                'Toda Sua, 2012 \nAutora: Sylvia Day',
+                put_row([put_image('https://m.media-amazon.com/images/P/B009WW56UG.01._SCLZZZZZZZ_SX500_.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'After',
+            "contents": [
+                'After, 2014 \nAutora: Anna Todd',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/810FrINgfYS.jpg'), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Orgulho e Preconceito',
+            "contents": [
+                'Orgulho e Preconceito, 1817 \nAutora: Jane Austen',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/719esIW3D7L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Meu querido meio-irmão',
+            "contents": [
+                'Meu querido meio-irmão, 2016 \nAutora: Penelope Ward',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71zVneLL6JL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Estilhaça-me',
+            "contents": [
+                'Estilhaça-me, 2011 \nAutor: Tahereh Mafi',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/71t558uD09L.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Os Instrumentos Mortais',
+            "contents": [
+                'Os Instrumentos Mortais, 2007 \nAutor: Cassandra Clare',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/81sAo9G+oxL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'É assim que Acaba',
+            "contents": [
+                'É assim que Acaba, 2016 \nAutora: Colleen Hoover',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/91r5G8RxqfL.jpg'), None, put_code('Sinopse do livro: \nEm É assim que acaba, Colleen Hoover nos apresenta \nLily, uma jovem que se mudou de uma cidadezinha do \nMaine para Boston, se formou em marketing e abriu \na própria floricultura. E é em um dos terraços de \nBoston que ela conhece Ryle, um neurocirurgião con-\nfiante, teimoso e talvez até um pouco arrogante, com \numa grande aversão a relacionamentos, mas que se sen-\nte muito atraído por ela.\nQuando os dois se apaixonam, Lily se vê no meio de \num relacionamento turbulento que não é o que ela es-\nperava. Mas será que ela conseguirá enxergar isso, \npor mais doloroso que seja?\nÉ assim que acaba é uma narrativa poderosa sobre a \nforça necessária para fazer as escolhas certas nas \nsituações mais difíceis. Considerada a obra mais \npessoal de Hoover, o livro aborda sem medo alguns \ntabus da sociedade para explorar a complexidade das \nrelações tóxicas, e como o amor e o abuso muitas \nvezes coexistem em uma confusão de sentimentos.')])
+            ]
+        })
+    if xx == 'Chris':
+        style(put_text('ACHAMOS QUE VOCÊ IRIA GOSTAR DAS SEGUINTES OBRAS: '), 'color:blue')
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Senhor dos Anéis',
+            "contents": [
+                'O Senhor dos Anéis, 2012 \nAutora: E. L. James',
+                put_row([put_image(''), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Guerra dos Mundos',
+            "contents": [
+                'A Guerra dos Mundos, 18 \nAutora: H. G. Wells',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'O Androides Sonham com Ovelhas Elétricas?',
+            "contents": [
+                'O Androides Sonham com Ovelhas Elétricas?, 2022 \nAutora: Ariana Godoy',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Ataque dos Titãs',
+            "contents": [
+                'Ataque dos Titãs, 2009 - 2021 \nAutor: Hajime Isayama',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/51gaCkrbPXL.jpg'), None, put_code('Sinopse do Mangá: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'A Guerra dos Tronos',
+            "contents": [
+                'A Guerra dos Tronos, 2013 \nAutora: Sylvain Reynard',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'One Punch-man',
+            "contents": [
+                'One Punch-man, 2019 \nAutora: Kendall Ryan',
+                put_row([put_image(''), None, put_code('Sinopse do Livro: \n')])
+            ]
+        })
+        put_widget(tpl, {
+            "open": False,
+            "title": 'Harry Potter',
+            "contents": [
+                'Harry Potter, 1998 - 2007 \nAutora: J. K. Rowling',
+                put_row([put_image('https://images-na.ssl-images-amazon.com/images/I/61WmoSu8RYL.jpg'), None, put_code('Sinopse do livro: \n')])
+            ]
+        })
+         
+
+
+
+    
+def main():
+    #put_text(dicionario)
+    tela_recomendacao('Yanis')
+    pass 
