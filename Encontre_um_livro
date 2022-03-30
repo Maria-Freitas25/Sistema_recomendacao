@@ -1,0 +1,164 @@
+from pywebio import *
+from pywebio.output import *
+from pywebio.input import *
+import math
+from math import sqrt
+from teste_5 import tela_recomendacao
+'''import sys
+sys.path.append("/Sistema_recomendação / teste_5.py")
+import teste_5 as i
+put_text(i)
+tela_recomendacao()'''
+global xx 
+xx= 'Faby'
+
+
+usuarios={"Yanis":{"A Máquina do Tempo":5.0,"Androides Sonham com Ovelhas Elétricas?":4.5,"Naruto Gold":2.5,"O Cavaleiro das Trevas":3.0,"A Guerra dos Mundos":4.5,"Computação no ensino fundamental":1.5,"Dias de um Futuro Esquecido.":3.0,"O Guia do Mochileiro das Galáxias":4.5,"Harry Potter": 2.5,"Duna":4.0, "O Milagre do Amanhã":1.5,"Percy Jackson":2.0,"A Sutil Arte de Ligar o F*da-se":2.0,"Os Bridgertons":1.5,"Jogos Vorazes":3.5,"Eu controlo como eu me sinto":1.5,"Ataque dos Titãs":4.5,"Eu, Robô":4.5},
+          "Faby":{"A Máquina do Tempo":2.0,"Anna Karenina":4.0,"Computação no ensino fundamental":1.5,"Buruti Mirim":1.5,"A Culpa é das Estrelas":3.5,"Percy Jackson":2.0,"A Sutil Arte de Ligar o F*da-se":1.5,"Orgulho e Preconceito":3.5,"Jogos Vorazes":4.0,"Eu controlo como eu me sinto":1.5,"A Seleção":4.0,"Dom Casmurro":2.0,"A Coragem de ser imperfeito":2.0,"Como eu era antes de você":4.5,"O morro do ventos uivantes":4.0,"Jane Eyre":3.5,"Toda Sua":4.0},
+          "Bella":{"Teto para Dois":3.7,"Anna Karenina":4.0,"A Culpa é das Estrelas":2.5,"O Guia do Mochileiro das Galáxias":3.0, "A Sutil Arte de Ligar o F*da-se":2.5,"Os Bridgertons":4.0,"Orgulho e Preconceito":4.5,"Jogos Vorazes":3.0,"A Seleção":4.0,"Dom Casmurro":4.0,"One Piece":2.0,"O Inferno de Gabriel":3.7,"Como eu era antes de você":3.7,"O morro do ventos uivantes":4.5,"Jane Eyre":5.0,"Literatura na escola":2.0,"Cinquenta Tons de Cinza":2.9,"Toda Sua":2.9,"Caderno do Futuro":4.0,"Através da Minha Janela":4.0,"O Poder do Hábito":2.0},
+          "Gaby":{"A Máquina do Tempo":2.9,"Naruto Gold":4.2,"O Cavaleiro das Trevas":3.9,"Harry Potter":4.5,"Duna":3.5, "O Milagre do Amanhã":3.5,"Percy Jackson":4.0,"A Sutil Arte de Ligar o F*da-se":1.0,"Jogos Vorazes":4.5,"A Seleção":2.9,"One Piece":3.5,"Fullmetal Alchemist":3.0,"Ataque dos Titãs":3.0,"Turma da Mônica":5.0,"Eu, Robô":4.2,"O Poder do Hábito":1.5},         
+          "Lindina":{"A Máquina do Tempo":2.5,"Androides Sonham com Ovelhas Elétricas?":2.5,"Naruto Gold":5.0,"O Guia do Mochileiro das Galáxias":3.0,"O Cavaleiro das Trevas":3.9,"Harry Potter":3.5,"Jogos Vorazes":3.0,"One Piece":5.0,"O Espetacular Homem-Aranha":3.9,"Watchman":3.9,"Fullmetal Alchemist":5.0,"Kimetsu no Yaiba":5.0,"Ataque dos Titãs":5.0,"Turma da Mônica":3.9,"Eu, Robô":4.0},
+          "Ayrton":{"A Guerra dos Mundos":2.9,"Projeto Ápis":3.5,"O Milagre do Amanhã":5.0,"A Sutil Arte de Ligar o F*da-se":4.5,"Eu controlo como eu me sinto":4.5,"O Senhor dos Anéis":3.0,"A Coragem de ser imperfeito":4.5,"O Espetacular Homem-Aranha":3.0,"Watchman":3.0,"Literatura na escola":3.5,"O Poder do Hábito":4.8},
+          "Margareth":{"Anna Karenina":3.5,"A Culpa é das Estrelas":4.5,"O Guia do Mochileiro das Galáxias":3.5,"Duna":2.5,"Os Bridgertons":5.0,"After":4.5,"Orgulho e Preconceito":4.5,"A Seleção":4.0,"O Inferno de Gabriel":4.8,"Como eu era antes de você":4.0,"O morro do ventos uivantes":4.0,"Jane Eyre":3.5,"Cinquenta Tons de Cinza":5.0,"Toda Sua":5.0,"Através da Minha Janela":4.5,"O Poder do Hábito":3.5},
+          "Eliseu": {"Androides Sonham com Ovelhas Elétricas?":3.0,"O Cavaleiro das Trevas":4.8,"A Guerra dos Mundos":3.9,"Dias de um Futuro Esquecido.":4.8,"O Guia do Mochileiro das Galáxias":3.9,"Harry Potter":2.8,"O Senhor dos Anéis":2.9,"One Piece":3.9,"O Espetacular Homem-Aranha":5.0,"Watchman":4.5,"Fullmetal Alchemist":5.0,"Turma da Mônica":4.7},
+          "Anthony":{"A Máquina do Tempo":2.9,"Androides Sonham com Ovelhas Elétricas?":3.2,"Naruto Gold":5.0,"A Guerra dos Mundos":4.5,"O Guia do Mochileiro das Galáxias":4.5,"Harry Potter":4.5,"Percy Jackson":4.5,"O Senhor dos Anéis":4.0,"One Piece":5.0,"Fullmetal Alchemist":4.5,"O Espetacular Homem-Aranha":3.9,"Kimetsu no Yaiba":5.0,"Ataque dos Titãs":5.0,"Turma da Mônica":4.5},
+          "Teodoro":{"Computação no ensino fundamental":4.5,"Buruti Mirim":4.0,"Projeto Ápis":4.5,"O Milagre do Amanhã":5.0,"Eu controlo como eu me sinto":3.0,"Literatura na escola":4.2,"Caderno do Futuro":5.0,"O Poder do Hábito":4.6},
+          "Malu":{"Teto para Dois":4.5,"A Guerra dos Mundos":3.5,"Anna Karenina":4.9,"Dias de um Futuro Esquecido.":5.4,"A Culpa é das Estrelas":2.8,"Duna":4.2,"Sutil Arte de Ligar o F*da-se":4.2,"Os Bridgertons":2.6,"After":4.5,"Orgulho e Preconceito":4.2,"Jogos Vorazes":3.4,"A Seleção":4.0,"Dom Casmurro":2.9,"O Inferno de Gabriel":5.0,"Como eu era antes de você":3.9,"O morro do ventos uivantes":3.9,"Jane Eyre":4.1,"Cinquenta Tons de Cinza":5.0,"Toda Sua":4.1,"Através da Minha Janela":4.8},
+          "Chris":{"Androides Sonham com Ovelhas Elétricas?":4.5, "A Guerra dos Mundos":5.0,"Dias de um Futuro Esquecido.":2.9,"O Guia do Mochileiro das Galáxias":4.5,"Duna":3.9,"O Senhor dos Anéis":4.5,"A Coragem de ser imperfeito":1.5,"One Piece":5.0,"O Espetacular Homem-Aranha":4.5,"Fullmetal Alchemist":5.0,"Ataque dos Titãs":5.0},
+"Recomendar":{}}
+
+global lista_livro
+global agora_vai
+
+def login():
+    credentials = input_group("Indicações de Livros", [
+        input("Digite seu nome:", name="username"),
+        checkbox("\nDentre esses livros e quadrinhos, quais você já leu e gostou?", options=["Ataque dos Titãs","A Coragem de ser imperfeito","A Culpa é das Estrelas",
+"A Guerra dos Mundos","A Máquina do Tempo","A Seleção","A Sutil Arte de Ligar o F*da-se","After","Androides Sonham com Ovelhas Elétricas?","Anna Karenina",
+"Através da Minha Janela","Buruti Mirim","Caderno do Futuro","Cinquenta Tons de Cinza","Como eu era antes de você",
+"Computação no ensino fundamental","Dias de um Futuro Esquecido.","Dom Casmurro","Duna", "Eu controlo como eu me sinto",
+"Eu, Robô","Fullmetal Alchemist","Harry Potter","Jane Eyre","Jogos Vorazes","Kimetsu no Yaiba",
+"Literatura na escola","Naruto Gold","O Cavaleiro das Trevas","O Espetacular Homem-Aranha", "O Guia do Mochileiro das Galáxias","O Inferno de Gabriel",
+"O Milagre do Amanhã", "O morro do ventos uivantes","One Piece","O Poder do Hábito","Orgulho e Preconceito","Os Bridgertons","O Senhor dos Anéis",
+"Percy Jackson","Projeto Ápis","Teto para Dois","Toda Sua","Turma da Mônica","Watchman"
+				],inline=None, validate=None, value=None,name="Checkbox", onchange=None)
+        ])
+    i=0
+    lista_notas=[]
+    global lista_livro
+    lista_livro = (credentials['Checkbox'])
+
+
+def juntando_dics():
+    global usuarios
+    name_user={}
+    type(name_user)
+    dict
+    global lista_livro
+    i=0
+    teste=[]
+    qt = len(lista_livro)
+    for i in range(qt):
+        a=lista_livro[i]
+        notas_usuario = input_group(a, [
+            radio("Dê sua nota para essa obra:", options=[1.0, 2.0, 3.0, 4.0, 5.0], value=0.0, inline=True, required=True, name="nota")
+        ])
+        name_user[a]=notas_usuario['nota']
+        i=i+1
+    #put_text(name_user)
+    usuarios['Recomendar']= name_user
+    #put_text(usuarios)
+    
+
+def manhattan (avaliação1,avaliação2):
+    distancia=0
+    clasemcomum=False
+    for i in avaliação1: #irá percorrer e guardar em i as avaliações
+        if i in avaliação2: #se i de avaliação1 esstiver em avaliação2
+            distancia+=abs(avaliação1[i]-avaliação2[i]) #cálculo de manhattan e define clasesemcomum como verdade.
+            clasemcomum= True
+    if clasemcomum: #se eles possuem classe em comum a distância é retornada
+        return distancia
+    else:
+        return-1
+#classificação em comum seguindo a resolução de manhattan
+
+def listordem(nome, usuarios):
+    dist=[] #uma lista para incluir
+    for usuario in usuarios: #procurar o usuario no dicionário estabelecido
+        if usuario != nome: #se usuário diferente do nome dado, será realizado o calculo de manhattan e com o append será adicionado a lista dist.
+            distancia= manhattan(usuarios[usuario],usuarios[nome])
+            dist.append((distancia,usuario))
+    dist.sort()
+    print(dist)
+    return dist
+
+
+def recomen(nome,usuarios): #função para recomendar, adicionar listas e com o for procurar o artista do usuário e verificar o mais próximo.
+    prox = listordem(nome,usuarios)[0][1]
+    recomendacoes=[]
+    vizinho=usuarios[prox]
+    nomeclas=usuarios[nome]
+    for livro in vizinho:
+        if not livro in nomeclas:
+             recomendacoes.append((livro,vizinho[livro]))
+
+    sorted(recomendacoes,
+                  key=lambda bookTuple: bookTuple[1],
+                  reverse=True)
+    
+    tam=len(recomendacoes)
+    Yanis_1=[('A Máquina do Tempo', 5.0), ('Androides Sonham com Ovelhas Elétricas?', 4.5), ('Naruto Gold', 2.5),( 'O Cavaleiro das Trevas', 3.0), ('A Guerra dos Mundos', 4.5), ('Computação no ensino fundamental', 1.5), ('Dias de um Futuro Esquecido.', 3.0), ('O Guia do Mochileiro das Galáxias', 4.5), ('Harry Potter', 2.5), ('Duna', 4.0), ('O Milagre do Amanhã', 1.5), ('Percy Jackson', 2.0), ('A Sutil Arte de Ligar o F*da-se', 2.0), ('Os Bridgertons', 1.5), ('Jogos Vorazes', 3.5), ('Eu controlo como eu me sinto', 1.5), ('Ataque dos Titãs', 4.5), ('Eu, Robô', 4.5)]
+    Faby_1=[('A Máquina do Tempo', 2.0), ('Anna Karenina', 4.0), ('Computação no ensino fundamental', 1.5), ('Buruti Mirim', 1.5),('A Culpa é das Estrelas', 3.5), ('Percy Jackson', 2.0),( 'A Sutil Arte de Ligar o F*da-se', 1.5), ('Orgulho e Preconceito', 3.5), ('Jogos Vorazes', 4.0), ('Eu controlo como eu me sinto', 1.5), ('A Seleção', 4.0), ('Dom Casmurro', 2.0), ('A Coragem de ser imperfeito', 2.0), ('Como eu era antes de você', 4.5), ('O morro do ventos uivantes', 4.0), ('Jane Eyre', 3.5), ('Toda Sua', 4.0)]
+    Bella_1=[('Teto para Dois', 3.7), ('Anna Karenina', 4.0), ('A Culpa é das Estrelas', 2.5), ('O Guia do Mochileiro das Galáxias', 3.0),('A Sutil Arte de Ligar o F*da-se', 2.5), ('Os Bridgertons', 4.0), ('Orgulho e Preconceito', 4.5), ('Jogos Vorazes', 3.0), ('A Seleção', 4.0), ('Dom Casmurro', 4.0), ('One Piece', 2.0), ('O Inferno de Gabriel', 3.7), ('Como eu era antes de você', 3.7), ('O morro do ventos uivantes', 4.5), ('Jane Eyre', 5.0), ('Literatura na escola', 2.0), ('Cinquenta Tons de Cinza', 2.9), ('Toda Sua', 2.9), ('Caderno do Futuro', 4.0), ('Através da Minha Janela', 4.0), ('O Poder do Hábito', 2.0)]
+    Gaby_1=[('A Máquina do Tempo', 2.9), ('Naruto Gold', 4.2), ('O Cavaleiro das Trevas', 3.9), ('Harry Potter', 4.5), ('Duna', 3.5), ('O Milagre do Amanhã', 3.5), ('Percy Jackson', 4.0), ('A Sutil Arte de Ligar o F*da-se', 1.0), ('Jogos Vorazes', 4.5), ('A Seleção', 2.9), ('One Piece', 3.5), ('Fullmetal Alchemist', 3.0), ('Ataque dos Titãs', 3.0), ('Turma da Mônica', 5.0), ('Eu, Robô', 4.2), ('O Poder do Hábito', 1.5)]
+    Lindina_1=[('A Máquina do Tempo', 2.5), ('Androides Sonham com Ovelhas Elétricas?', 2.5), ('Naruto Gold', 5.0), ('O Guia do Mochileiro das Galáxias', 3.0), ('O Cavaleiro das Trevas', 3.9), ('Harry Potter', 3.5), ('Jogos Vorazes', 3.0), ('One Piece', 5.0), ('O Espetacular Homem-Aranha', 3.9), ('Watchman', 3.9), ('Fullmetal Alchemist', 5.0), ('Kimetsu no Yaiba', 5.0), ('Ataque dos Titãs', 5.0), ('Turma da Mônica', 3.9), ('Eu, Robô', 4.0)]
+    Ayrton_1=[('A Guerra dos Mundos', 2.9), ('Projeto Ápis', 3.5), ('O Milagre do Amanhã', 5.0), ('A Sutil Arte de Ligar o F*da-se', 4.5), ('Eu controlo como eu me sinto', 4.5), ('O Senhor dos Anéis', 3.0), ('A Coragem de ser imperfeito', 4.5), ('O Espetacular Homem-Aranha', 3.0), ('Watchman', 3.0), ('Literatura na escola', 3.5), ('O Poder do Hábito', 4.8)]
+    Margareth_1=[('Anna Karenina', 3.5), ('A Culpa é das Estrelas', 4.5), ('O Guia do Mochileiro das Galáxias', 3.5), ('Duna', 2.5), ('Os Bridgertons', 5.0), ('After', 4.5), ('Orgulho e Preconceito', 4.5), ('A Seleção', 4.0), ('O Inferno de Gabriel', 4.8), ('Como eu era antes de você', 4.0),('O morro do ventos uivantes', 4.0), ('Jane Eyre', 3.5), ('Cinquenta Tons de Cinza', 5.0), ('Toda Sua', 5.0), ('Através da Minha Janela', 4.5), ('O Poder do Hábito', 3.5)]
+    Eliseu_1=[('Androides Sonham com Ovelhas Elétricas?', 3.0), ('O Cavaleiro das Trevas', 4.8), ('A Guerra dos Mundos', 3.9), ('Dias de um Futuro Esquecido.', 4.8), ('O Guia do Mochileiro das Galáxias', 3.9), ('Harry Potter', 2.8), ('O Senhor dos Anéis', 2.9), ('One Piece', 3.9), ('O Espetacular Homem-Aranha', 5.0), ('Watchman', 4.5), ('Fullmetal Alchemist', 5.0), ('Turma da Mônica', 4.7)]
+    Anthony_1=[('A Máquina do Tempo', 2.9), ('Androides Sonham com Ovelhas Elétricas?', 3.2), ('Naruto Gold', 5.0), ('A Guerra dos Mundos', 4.5), ('O Guia do Mochileiro das Galáxias', 4.5), ('Harry Potter', 4.5), ('Percy Jackson', 4.5), ('O Senhor dos Anéis', 4.0), ('One Piece', 5.0), ('Fullmetal Alchemist', 4.5), ('O Espetacular Homem-Aranha', 3.9), ('Kimetsu no Yaiba', 5.0), ('Ataque dos Titãs', 5.0), ('Turma da Mônica', 4.5)]
+    Teodoro_1= [('Computação no ensino fundamental', 4.5), ('Buruti Mirim', 4.0), ('Projeto Ápis', 4.5), ('O Milagre do Amanhã', 5.0), ('Eu controlo como eu me sinto', 3.0), ('Literatura na escola', 4.2), ('Caderno do Futuro', 5.0), ('O Poder do Hábito', 4.6)]
+    Malu_1=[('Teto para Dois', 4.5), ('A Guerra dos Mundos', 3.5), ('Anna Karenina', 4.9), ('Dias de um Futuro Esquecido.', 5.4), ('A Culpa é das Estrelas', 2.8), ('Duna', 4.2), ('Sutil Arte de Ligar o F*da-se', 4.2), ('Os Bridgertons', 2.6), ('After', 4.5), ('Orgulho e Preconceito', 4.2), ('Jogos Vorazes', 3.4), ('A Seleção', 4.0), ('Dom Casmurro', 2.9), ('O Inferno de Gabriel', 5.0), ('Como eu era antes de você', 3.9), ('O morro do ventos uivantes', 3.9), ('Jane Eyre', 4.1), ('Cinquenta Tons de Cinza', 5.0), ('Toda Sua', 4.1), ('Através da Minha Janela', 4.8)]
+    Chris_1=[('Androides Sonham com Ovelhas Elétricas?', 4.5), ('A Guerra dos Mundos', 5.0), ('Dias de um Futuro Esquecido.', 2.9), ('O Guia do Mochileiro das Galáxias', 4.5), ('Duna', 3.9), ('O Senhor dos Anéis', 4.5), ('A Coragem de ser imperfeito', 1.5), ('One Piece', 5.0), ('O Espetacular Homem-Aranha', 4.5), ('Fullmetal Alchemist', 5.0), ('Ataque dos Titãs', 5.0)]
+    i=0
+
+    if Yanis_1 == recomendacoes:
+        tela_recomendacao('Yanis')
+    if Faby_1 == recomendacoes:
+        tela_recomendacao('Faby')
+    if Bella_1 == recomendacoes:
+        tela_recomendacao('Bella')
+    if Gaby_1 == recomendacoes:
+        tela_recomendacao('Gaby')
+    if Lindina_1 == recomendacoes:
+        tela_recomendacao('Lindina')
+    if Ayrton_1 == recomendacoes:
+        tela_recomendacao('Ayrton')
+    if Margareth_1 == recomendacoes:
+        tela_recomendacao('Margareth')
+    if Eliseu_1 == recomendacoes:
+        tela_recomendacao('Eliseu')
+    if Anthony_1 == recomendacoes:
+        tela_recomendacao('Anthony')
+    if Teodoro_1 == recomendacoes:
+        tela_recomendacao('Teodoro')
+    if Malu_1 == recomendacoes:
+        tela_recomendacao('Malu')
+    if Chris_1 == recomendacoes:
+        tela_recomendacao('Chris')
+    
+
+@config(theme='dark')
+def main():  
+    put_image('https://i.pinimg.com/originals/46/d6/50/46d650e9dc519c8fa936ae2c7d04919c.jpg')
+    login()
+    juntando_dics()
+    recomen("Recomendar",usuarios)
+    pass
+
+
+
+
+
+
+
